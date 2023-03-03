@@ -57,7 +57,7 @@ public class ProductService {
   }
 
   public List<Product> searchProduct(String query) {
-    if (query.isEmpty())
+    if (query == null)
       return new ArrayList<>();
     Criteria criteria = new Criteria("name").contains(query).or("description").contains(query);
     SearchHits<Product> searchHits = elasticsearchOperations.search(new CriteriaQuery(criteria), Product.class);
